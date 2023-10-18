@@ -9,13 +9,13 @@
 	
 	<div>
 		<button>
-			<a href="photo/create">
+			<a href="/home/create">
 				nuova foto
 			</a>
 		</button>
 	
 		<button>
-			<a href="photo/categories">
+			<a href="#">
 				le categorie
 			</a>
 		</button>
@@ -32,7 +32,7 @@
 		
 		<ul th:if="${photos.size()} > 0">
 			<li th:each="photo : ${photos}">
-				<a th:href="@{/photo/{id} (id = ${photo.getId()} ) }">
+				<a th:href="@{/home/photo/{id} (id = ${photo.getId()} ) }">
 					[[${photo.getTitle()}]]
 					<br />
 					<img th:src="${photo.getUrl()}" style="width: 80px;">
@@ -41,18 +41,21 @@
 				<small>					
 				[[${photo.getOverview()}]]
 				</small>
-				<hr>
-				<!-- <button>					
+				<br />
+				 <button>					
 				<a 
-					th:href="@{home/photo/edit/{id} (id = ${pizza.getId()})}">	
+					th:href="@{/home/photo/edit/{id} (id = ${photo.getId()})}">	
 					 Edita 
 				</a>
 				</button>
-				<form th:action="@{home/photo/delete/{id}(id=${pizza.id})}" 
-						method="POST">
+				
+				<form th:action="@{/home/photo/delete/{id}(id=${photo.getId()})}" 
+						method="POST"
+						style="display: inline-block;">
 					<input type="submit" value="ELIMINA">
 				</form>
-				-->
+				
+				<hr>
 			</li>
 		</ul>
 		

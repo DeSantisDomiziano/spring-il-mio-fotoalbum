@@ -1,6 +1,6 @@
-package org.java.app.controller.auth;
+package org.java.app.auth.controller;
 
-import org.java.app.controller.auth.service.UserService;
+import org.java.app.auth.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -19,13 +19,10 @@ public class AuthConfig {
 			http.csrf().disable()
 				.authorizeHttpRequests()
 				.requestMatchers("/api/**").permitAll()
-		        .requestMatchers("/create").hasAuthority("ADMIN")
-		        .requestMatchers("/edit/**").hasAuthority("ADMIN")
-		        .requestMatchers("/delete/**").hasAuthority("ADMIN")
-		        .requestMatchers("/create/deal/**").hasAuthority("ADMIN")
-		        .requestMatchers("/edit/deal/**").hasAuthority("ADMIN")
+		        .requestMatchers("/home/create").hasAuthority("ADMIN")
+		        .requestMatchers("/home/photo/**").hasAuthority("ADMIN")
 		        .requestMatchers("/**").permitAll()
-		        .and().formLogin().defaultSuccessUrl("/pizze")
+		        .and().formLogin().defaultSuccessUrl("/home/list")
 		        .and().logout();
 			
 			return http.build();

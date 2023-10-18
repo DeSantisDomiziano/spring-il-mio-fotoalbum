@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+		<h1>			
+			[[${photo.getTitle()}]]
+		</h1>
+			<img th:src="${photo.getUrl()}">
+		<p>			
+		<small>			
+			[[${photo.getOverview()}]]
+		</small>
+		</p>
+		<ul th:if="${photo.getCategories().size()} > 0">
+			<li th:each="category : ${photo.getCategories()}"}>
+				[[${category.getNameCategory()}]]
+			<hr>
+			</li>
+		</ul>
+		
+		<button>
+			<a  href="/home/list"> HOME</a>
+		</button>
+</body>
+</html>

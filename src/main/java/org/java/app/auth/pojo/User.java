@@ -1,4 +1,4 @@
-package org.java.app.controller.auth.pojo;
+package org.java.app.auth.pojo;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;

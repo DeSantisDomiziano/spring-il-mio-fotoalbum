@@ -2,8 +2,11 @@ package org.java.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.java.app.controller.auth.service.RoleService;
-import org.java.app.controller.auth.service.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.java.app.auth.pojo.Role;
+import org.java.app.auth.pojo.User;
+import org.java.app.auth.service.RoleService;
+import org.java.app.auth.service.UserService;
 import org.java.app.entity.pojo.Categories;
 import org.java.app.entity.pojo.Photo;
 import org.java.app.entity.service.CategoriesService;
@@ -76,6 +79,12 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 		photoService.save(p4);
 		photoService.save(p5);
 		
+		Role admin = new Role("ADMIN");
+		final String pwAdmin = new BCryptPasswordEncoder().encode("dom");
 		
+		roleService.save(admin);
+		User testAdmin = new User("admin", pwAdmin, admin);
+		
+		userService.save(testAdmin);		
 	}
 }

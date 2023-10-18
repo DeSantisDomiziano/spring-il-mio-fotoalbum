@@ -1,4 +1,4 @@
-package org.java.app.controller.auth.pojo;
+package org.java.app.auth.pojo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

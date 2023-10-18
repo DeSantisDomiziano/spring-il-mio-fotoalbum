@@ -1,8 +1,9 @@
-package org.java.app.controller.auth.service;
+package org.java.app.auth.service;
 
 import java.util.List;
-import org.java.app.controller.auth.pojo.User;
-import org.java.app.controller.auth.repo.UserRepo;
+
+import org.java.app.auth.pojo.User;
+import org.java.app.auth.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
