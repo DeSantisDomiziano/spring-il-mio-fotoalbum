@@ -1,8 +1,6 @@
 package org.java.app.mvc;
 
-import java.util.Arrays;
 import java.util.List;
-
 import org.java.app.entity.pojo.Categories;
 import org.java.app.entity.pojo.Photo;
 import org.java.app.entity.service.CategoriesService;
@@ -60,6 +58,8 @@ public class PhotoController {
 		
 		model.addAttribute("photo", new Photo());
 		
+		List<Categories> categories = categoriesService.findAll();
+		model.addAttribute("categories", categories);
 		return "create-photo";
 	}
 	
@@ -83,8 +83,6 @@ public class PhotoController {
 						  Model model) {
 		
 		List<Categories> categories = categoriesService.findAll();
-		
-		System.out.println(categories);
 		
 		model.addAttribute("photo", photoService.findById(id));
 		model.addAttribute("categories", categories);

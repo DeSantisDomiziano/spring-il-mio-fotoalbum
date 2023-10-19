@@ -52,6 +52,18 @@
 			<br />
 			<!--./END ####################### -->
 			
+			<label for="visible"> Categorie</label>
+			<div th:each="category : ${categories}">
+				<input type="checkbox" 
+						th:id="'category-' + ${category.id}" th:value="${category.id}"
+						th:field="${photo.categories}" >
+				<label th:for="'category-' + ${category.id}">[[${category.nameCategory}]]</label>
+			</div>
+			<br />
+			<hr>
+			<br />
+			<!--./END ####################### -->
+			
 			<label for="visible"> vuoi che sia subito visibile l'immagine</label>
 			<input type="checkbox" name="visible" th:field="*{visible}" checked>
 			<div th:if="${#fields.hasErrors('visible')}">
