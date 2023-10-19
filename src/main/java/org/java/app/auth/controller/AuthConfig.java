@@ -21,6 +21,7 @@ public class AuthConfig {
 				.requestMatchers("/api/**").permitAll()
 		        .requestMatchers("/home/create").hasAuthority("ADMIN")
 		        .requestMatchers("/home/photo/**").hasAuthority("ADMIN")
+		        .requestMatchers("/categories/**").hasAuthority("ADMIN")
 		        .requestMatchers("/**").permitAll()
 		        .and().formLogin().defaultSuccessUrl("/home/list")
 		        .and().logout();

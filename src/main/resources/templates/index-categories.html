@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div>
+		<button>
+			<a href="/home/list">
+				HOME
+			</a>
+		</button>
+		
+		<button>
+			<a href="/categories/create">
+				nuova categoria
+			</a>
+		</button>
+		
+		<p th:if="${categories.size()} == 0">
+			non ci sono categorie
+		</p>
+		
+		<ul th:if="${categories.size()} > 0">
+			<li th:each="category : ${categories}">
+					[[${category.getNameCategory()}]]
+				<form th:action="@{/categories/delete/{id}(id=${category.getId()})}" 
+						method="POST"
+						style="display: inline-block;">
+					<input type="submit" value="ELIMINA">
+				</form>
+				
+				<hr>
+			</li>
+		</ul>
+		
+	</div>
+</body>
+</html>

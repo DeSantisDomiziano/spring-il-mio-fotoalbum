@@ -5,7 +5,7 @@
 	<title>Document</title>
 </head>
 <body>
-		<h1>Inserisci una nuova pizza!</h1>
+		<h1>edita la foto!</h1>
 		<form
 		th:object="${photo}"
 		method="POST">
@@ -46,6 +46,18 @@
 						
 					</li>
 				</ul>
+			</div>
+			<br />
+			<hr>
+			<br />
+			<!--./END ####################### -->
+			
+			<label for="visible"> Categorie</label>
+			<div th:each="category : ${categories}">
+				<input type="checkbox" 
+						th:id="'category-' + ${category.id}" th:value="${category.id}"
+						th:field="${photo.categories}" >
+				<label th:for="'category-' + ${category.id}">[[${category.nameCategory}]]</label>
 			</div>
 			<br />
 			<hr>

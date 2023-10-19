@@ -1,7 +1,11 @@
 package org.java.app.mvc;
 
+import java.util.Arrays;
 import java.util.List;
+
+import org.java.app.entity.pojo.Categories;
 import org.java.app.entity.pojo.Photo;
+import org.java.app.entity.service.CategoriesService;
 import org.java.app.entity.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +26,9 @@ public class PhotoController {
 	
 	@Autowired
 	private PhotoService photoService;
+	
+	@Autowired
+	private CategoriesService categoriesService;
 	
 	@GetMapping("/list")
 	public String GetIndex(Model model, @RequestParam(required = false) String title) {
@@ -75,7 +82,12 @@ public class PhotoController {
 	public String getUpdate(@PathVariable long id,
 						  Model model) {
 		
+		List<Categories> categories = categoriesService.findAll();
+		
+		System.out.println(categories);
+		
 		model.addAttribute("photo", photoService.findById(id));
+		model.addAttribute("categories", categories);
 		
 		return "edit-photo";
 	}
@@ -102,5 +114,4 @@ public class PhotoController {
 		
 		return "redirect:/home/list";
 	}
-
 }
